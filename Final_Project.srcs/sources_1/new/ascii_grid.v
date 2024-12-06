@@ -52,9 +52,11 @@ module ascii_grid(
             if (debounce == 0) begin
                 if(data_transmitted == 8'h0D) begin
                     iterator = (((iterator / 40) + 1) % 6) * 40;
-                end else if (data_transmitted == 8'h7F) begin 
-                    iterator = iterator - 1 > 0 ? iterator - 1 : 0;
-                    ascii_grid_flat[(1679 - (iterator * 7)) -: 7] = 7'h00; 
+                end else if (data_transmitted == 8'h7F) begin
+                    if (iterator > 0) begin
+                        iterator = iterator - 1;
+                        ascii_grid_flat[(1679 - (iterator * 7)) -: 7] = 7'h00;
+                    end
                 end else begin
                     ascii_grid_flat[(1679 - (iterator * 7)) -: 7] = data_transmitted; 
                     iterator = (iterator + 1) % 240;

@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.runs/synth_1/top.tcl"
+  variable script "C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.runs/synth_1/top.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,7 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 8
+set_param chipscope.maxJobs 3
 set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
@@ -64,29 +64,29 @@ create_project -in_memory -part xc7a35tcpg236-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.cache/wt [current_project]
-set_property parent.project_path C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.cache/wt [current_project]
+set_property parent.project_path C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
-set_property ip_output_repo c:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.cache/ip [current_project]
+set_property ip_output_repo c:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/import/ClockDivider.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_grid.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_rom.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_test.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/baud_gen.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/import/hexto7segment.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/import/quadSevenSeg.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/import/system.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/uart_rx.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/uart_system.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/uart_tx.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/vga_controller.v
-  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/top.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/import/ClockDivider.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_grid.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_rom.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_test.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/baud_gen.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/import/hexto7segment.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/import/quadSevenSeg.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/import/system.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/uart_rx.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/uart_system.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/uart_tx.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/vga_controller.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/top.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -97,12 +97,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/constrs_1/imports/HwSynLab/Basys-3-Master.xdc
-set_property used_in_implementation false [get_files C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/constrs_1/imports/HwSynLab/Basys-3-Master.xdc]
+read_xdc C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/constrs_1/imports/HwSynLab/Basys-3-Master.xdc
+set_property used_in_implementation false [get_files C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/constrs_1/imports/HwSynLab/Basys-3-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/utils_1/imports/synth_1/system.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/utils_1/imports/synth_1/system.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
