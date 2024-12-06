@@ -3,22 +3,22 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Fri Dec  6 21:19:55 2024
-# Process ID: 13948
-# Current directory: C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.runs/synth_1
+# Start of session at: Fri Dec  6 21:53:54 2024
+# Process ID: 29936
+# Current directory: C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
-# Log file: C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.runs/synth_1/top.vds
-# Journal file: C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.runs/synth_1\vivado.jou
-# Running On        :Boom
+# Log file: C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.runs/synth_1/top.vds
+# Journal file: C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.runs/synth_1\vivado.jou
+# Running On        :Laptop-Chanatpakorn
 # Platform          :Windows Server 2016 or Windows 10
 # Operating System  :22631
-# Processor Detail  :AMD Ryzen 5 PRO 4650U with Radeon Graphics
-# CPU Frequency     :2096 MHz
-# CPU Physical cores:6
-# CPU Logical cores :12
-# Host memory       :16349 MB
-# Swap memory       :5905 MB
-# Total Virtual     :22254 MB
-# Available Virtual :6995 MB
+# Processor Detail  :13th Gen Intel(R) Core(TM) i9-13980HX
+# CPU Frequency     :2419 MHz
+# CPU Physical cores:24
+# CPU Logical cores :32
+# Host memory       :16779 MB
+# Swap memory       :16106 MB
+# Total Virtual     :32886 MB
+# Available Virtual :11746 MB
 #-----------------------------------------------------------
 source top.tcl -notrace
