@@ -55,8 +55,9 @@ module top(
     wire [7:0] data_transmitted;
     wire [1679:0] ascii_grid_flat;
     wire data_valid;
+    wire [7:0] iterator;
     
-    ascii_grid grid(clk, data_valid, reset, data_transmitted, ascii_grid_flat);
+    ascii_grid grid(clk, data_valid, reset, data_transmitted, ascii_grid_flat, iterator);
     
     uart_system uart(
         .clk(clk),

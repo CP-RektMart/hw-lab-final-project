@@ -25,10 +25,11 @@ module ascii_grid(
     input data_valid,
     input reset,
     input [7:0] data_transmitted,
-    output reg [1679:0] ascii_grid_flat
+    output reg [1679:0] ascii_grid_flat,
+    output reg [7:0] iterator
     );
     
-    reg [7:0] iterator; // 8 bit char pointer 0-239
+//    reg [7:0] iterator; // 8 bit char pointer 0-239
     initial iterator = 0;
     
 //    initial begin
@@ -44,8 +45,23 @@ module ascii_grid(
     
     reg debounce;
 	initial debounce = 0;
+	
+	// *** Generate 25MHz from 100MHz *********************************************************
+	reg  [1:0] r_25MHz;
+	wire w_25MHz;
+	
+	always @(posedge clk or posedge reset)
+		if(reset)
+		  r_25MHz <= 0;
+		else
+		  r_25MHz <= r_25MHz + 1;
+	
+	assign w_25MHz = (r_25MHz == 0) ? 1 : 0; // assert tick 1/4 of the time
+    // ****************************************************************************************
+	
+	integer i;
     
-    always @(posedge clk or posedge reset) begin
+    always @(posedge w_25MHz or posedge reset) begin
         if (reset) begin
             iterator = 8'b0; // Reset iterator correctly
         end else if (data_valid) begin
