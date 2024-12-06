@@ -57,11 +57,7 @@ if {$::dispatch::connected} {
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 8
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache C:/Users/Chanatpakorn/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-26756-Laptop-Chanatpakorn/incrSyn
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -79,6 +75,8 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/import/ClockDivider.v
+  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_rom.v
+  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_test.v
   C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/baud_gen.v
   C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/import/hexto7segment.v
   C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/import/quadSevenSeg.v
@@ -86,6 +84,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/uart_rx.v
   C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/uart_system.v
   C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/uart_tx.v
+  C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/vga_controller.v
   C:/Users/Chanatpakorn/Documents/hw-lab-final-project/Final_Project.srcs/sources_1/new/top.v
 }
 OPTRACE "Adding files" END { }
