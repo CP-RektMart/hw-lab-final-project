@@ -2213,5 +2213,6 @@ module ascii_rom(
 			11'h7fd: data = 8'b11111111;	//********
 			11'h7fe: data = 8'b11111111;	//********
 			11'h7ff: data = 8'b11111111;	//********
+			default: data = 8'b00000000;
 		endcase
 endmodule

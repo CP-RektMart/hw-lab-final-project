@@ -25,11 +25,10 @@ module ascii_grid(
     input data_valid,
     input reset,
     input [7:0] data_transmitted,
-    output reg [1679:0] ascii_grid_flat,
+    output reg [1919:0] ascii_grid_flat,
     output reg [7:0] iterator
     );
     
-//    reg [7:0] iterator; // 8 bit char pointer 0-239
     initial iterator = 0;
     
 //    initial begin
@@ -71,10 +70,10 @@ module ascii_grid(
                 end else if (data_transmitted == 8'h7F) begin
                     if (iterator > 0) begin
                         iterator = iterator - 1;
-                        ascii_grid_flat[(1679 - (iterator * 7)) -: 7] = 7'h00;
+                        ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = 8'h00;
                     end
                 end else begin
-                    ascii_grid_flat[(1679 - (iterator * 7)) -: 7] = data_transmitted; 
+                    ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = data_transmitted; 
                     iterator = (iterator + 1) % 240;
                 end
                 debounce = 1;

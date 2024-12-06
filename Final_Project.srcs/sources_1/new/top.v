@@ -26,7 +26,7 @@ module top(
     //data configuration
     wire [7:0] data_received;
     wire [7:0] data_transmitted;
-    wire [1679:0] ascii_grid_flat;
+    wire [1919:0] ascii_grid_flat;
     wire data_valid;
     wire [7:0] iterator;
     
