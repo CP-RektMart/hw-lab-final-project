@@ -75,6 +75,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/import/ClockDivider.v
+  C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_grid.v
   C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_rom.v
   C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/ascii_test.v
   C:/Users/ThinkPad/Desktop/hw-lab-final-project/Final_Project.srcs/sources_1/new/baud_gen.v

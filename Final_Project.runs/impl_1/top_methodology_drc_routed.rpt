@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Fri Dec  6 20:55:29 2024
+| Date         : Fri Dec  6 21:10:48 2024
 | Host         : Boom running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -541,37 +541,37 @@ Related violations: <none>
 
 TIMING-16#1 Warning
 Large setup violation  
-There is a large setup violation of -1.618 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[7] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.868 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[10] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#2 Warning
 Large setup violation  
-There is a large setup violation of -1.697 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[9] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.922 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[12] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#3 Warning
 Large setup violation  
-There is a large setup violation of -1.721 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[8] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.982 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[9] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#4 Warning
 Large setup violation  
-There is a large setup violation of -1.729 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[13] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -2.029 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[8] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#5 Warning
 Large setup violation  
-There is a large setup violation of -1.738 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[11] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -2.109 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[7] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#6 Warning
 Large setup violation  
-There is a large setup violation of -1.785 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[12] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -2.171 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[11] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#7 Warning
 Large setup violation  
-There is a large setup violation of -1.815 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[10] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -2.206 ns between vga/h_count_reg_reg[3]/C (clocked by sys_clk_pin) and at/rom/addr_reg_reg/ADDRARDADDR[13] (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-18#1 Warning
