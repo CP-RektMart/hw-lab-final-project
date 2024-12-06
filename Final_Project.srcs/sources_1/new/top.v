@@ -24,39 +24,53 @@ module top(
     wire [11:0] rgb_next;
     
     //data configuration
-    wire [7:0] data_received;
-    wire [7:0] data_transmitted;
+    wire [7:0] data_received_1;
+    wire [7:0] data_transmitted_1;
+    wire [7:0] data_received_2;
+    wire [7:0] data_transmitted_2;
     wire [1679:0] ascii_grid_flat;
-    wire data_valid;
+    wire data_valid_1;
+    wire data_valid_2;
     wire [7:0] iterator;
     
-    //dummy
-    wire dummy1;
+    //grid display
+//    ascii_grid grid(clk, data_valid_2, reset, data_transmitted_1, ascii_grid_flat, iterator);
+    ascii_grid grid(clk, data_valid_2, reset, data_received_2, ascii_grid_flat, iterator);
     
-    ascii_grid grid(clk, data_valid, reset, data_transmitted, ascii_grid_flat, iterator);
-    
-    //receiving from other sources
+    //receiving from others
     uart_system uart1(
         .clk(clk),
         .rx(RsRx),
+        .tx(JA2),
+        .sw_in(sw),
+        .data_received(data_received_1),
+        .data_transmitted(data_transmitted_1),
+        .data_valid(data_valid_1),
+        .btnSent(btnU)
+    );
+    
+    //receiving from keyboard - TO BE IMPLEMENTED
+    uart_system uart2(
+        .clk(clk),
+        .rx(JA1),
         .tx(RsTx),
         .sw_in(sw),
-        .data_received(data_received),
-        .data_transmitted(data_transmitted),
-        .data_valid(data_valid),
-        .btnSent(btnU)
+        .data_received(data_received_2),
+        .data_transmitted(data_transmitted_2),
+        .data_valid(data_valid_2),
+        .btnSent(1'b0)
     );
     
     hexDisplay hxd (
         .seg(seg),
         .dp(dp),
         .an(an),
-        .data_in({data_transmitted, data_received}),
+        .data_in({data_transmitted_2, data_received_1}),
         .clk(clk)
     );
     
     //output
-    assign led = data_received;
+    assign led = data_received_1;
     
      // VGA Controller
     // RUN NUMBER
