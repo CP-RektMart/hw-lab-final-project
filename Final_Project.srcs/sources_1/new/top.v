@@ -38,8 +38,8 @@ module top(
     //receiving from other sources
     uart_system uart1(
         .clk(clk),
-        .rx(JA1),
-        .tx(JA2),
+        .rx(RsRx),
+        .tx(RsTx),
         .sw_in(sw),
         .data_received(data_received),
         .data_transmitted(data_transmitted),
