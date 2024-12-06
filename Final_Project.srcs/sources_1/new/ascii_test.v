@@ -15,7 +15,7 @@ module ascii_test(
     );
     
     // signal declarations
-    wire [10:0] rom_addr;           // 11-bit text ROM address
+    wire [11:0] rom_addr;           // 12-bit text ROM address
     wire [7:0] ascii_char;          // 8-bit ASCII character code
     wire [10:0] ascii_index;
     wire [3:0] char_row;            // 4-bit row of ASCII character
