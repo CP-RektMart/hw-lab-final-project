@@ -68,8 +68,6 @@ module top(
         .data_valid(data_valid),
         .btnSent(btnU)
     );
-	
-	
     
     hexDisplay hxd (
         .seg(seg),

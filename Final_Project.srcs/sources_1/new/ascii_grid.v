@@ -50,8 +50,12 @@ module ascii_grid(
             iterator = 8'b0; // Reset iterator correctly
         end else if (data_valid) begin
             if (debounce == 0) begin
-                ascii_grid_flat[(1679 - (iterator * 7)) -: 7] = data_transmitted; 
-                iterator = (iterator + 1) % 240; 
+                if(data_transmitted == 8'h0D) begin
+                    iterator = ((iterator / 40) + 1) % 6;
+                end else begin
+                    ascii_grid_flat[(1679 - (iterator * 7)) -: 7] = data_transmitted; 
+                    iterator = (iterator + 1) % 240;
+                end
                 debounce = 1;
             end
         end else if (data_valid == 0) begin
