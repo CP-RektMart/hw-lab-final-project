@@ -24,6 +24,7 @@ module top(
     wire [11:0] rgb_next;
     
     //data configuration
+<<<<<<< HEAD
     wire [7:0] data_received_1;
     wire [7:0] data_transmitted_1;
     wire [7:0] data_received_2;
@@ -31,6 +32,12 @@ module top(
     wire [1679:0] ascii_grid_flat;
     wire data_valid_1;
     wire data_valid_2;
+=======
+    wire [7:0] data_received;
+    wire [7:0] data_transmitted;
+    wire [1919:0] ascii_grid_flat;
+    wire data_valid;
+>>>>>>> 7805dcc2b4f8621c1a2d5e01ac3dcb2ccd7b3865
     wire [7:0] iterator;
     
     //grid display
