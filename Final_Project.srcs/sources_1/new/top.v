@@ -81,13 +81,21 @@ module top(
         .data_valid(data_valid),
         .btnSent(btnU)
     );
+	
+	reg debounce;
+	initial debounce = 0;
     
-    always @(negedge data_valid or posedge reset) begin
+    always @(posedge clk or posedge reset) begin
         if (reset) begin
-            iterator = 8'b0; // Reset the iterator to 0
+            iterator = 8'b0; // Reset iterator correctly
         end else if (data_valid) begin
-            ascii_grid_flat[(1679 - (iterator * 7)) -: 7] = data_transmitted;
-            iterator = (iterator + 1) % 240;
+            if (debounce == 0) begin
+                ascii_grid_flat[(1679 - (iterator * 7)) -: 7] = data_transmitted; 
+                iterator = (iterator + 1) % 240; 
+                debounce = 1;
+            end
+        end else if (data_valid == 0) begin
+            debounce = 0;
         end
     end
     
