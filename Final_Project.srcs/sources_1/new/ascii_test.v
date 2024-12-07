@@ -8,16 +8,16 @@
 
 module ascii_test(
     input clk,
-    input [1919:0] ascii_grid_flat,
+    input [3839:0] ascii_grid_flat,
     input video_on,
     input [9:0] x, y,
     output reg [11:0] rgb
     );
     
     // signal declarations
-    wire [11:0] rom_addr;           // 12-bit text ROM address
-    wire [7:0] ascii_char;          // 8-bit ASCII character code
-    wire [10:0] ascii_index;
+    wire [19:0] rom_addr;           // 20-bit text ROM address
+    wire [15:0] ascii_char;          // 16-bit ASCII character code
+    wire [11:0] ascii_index;        // 12-Bit index
     wire [3:0] char_row;            // 4-bit row of ASCII character
     wire [2:0] bit_addr;            // column number of ROM data
     wire [7:0] rom_data;            // 8-bit row data from text ROM
@@ -28,13 +28,13 @@ module ascii_test(
 
     assign ascii_index = ((x >= 16 && x < 336) && (y >= 208 && y < 304)) 
                      ? compute_ascii_index(x, y) 
-                     : 11'd1920; // Default to an out-of-bound index when not in range.
-    assign ascii_char = (ascii_index < 1920) 
-                    ? ascii_grid_flat[ascii_index -: 8] 
-                    : 8'h00; // Default value if out of range.
-    function [10:0] compute_ascii_index(input [9:0] x, input [9:0] y);
+                     : 12'd3840; // Default to an out-of-bound index when not in range.
+    assign ascii_char = (ascii_index < 3840) 
+                    ? ascii_grid_flat[ascii_index -: 16] 
+                    : 16'h00; // Default value if out of range.
+    function [11:0] compute_ascii_index(input [9:0] x, input [9:0] y);
     begin
-        compute_ascii_index = 1919-((y-208)/16)*(8*40)-((x-16)/8)*8;
+        compute_ascii_index = 3839-((y-208)/16)*(16*40)-((x-16)/8)*16;
     end
     endfunction    
                  

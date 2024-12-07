@@ -25,7 +25,7 @@ module ascii_grid(
     input data_valid,
     input reset,
     input [7:0] data_transmitted,
-    output reg [1919:0] ascii_grid_flat,
+    output reg [3839:0] ascii_grid_flat,
     output reg [7:0] iterator
     );
     
@@ -73,11 +73,12 @@ module ascii_grid(
             thai_char_count = 0;
             thai_char = 24'b0; // Reset thai_char
             debounce = 0;
+            ascii_grid_flat = 3840'b0;
         end else if (data_valid) begin
             if (debounce == 0) begin
                 if (is_thai) begin
                     if(thai_char_count == 2) begin
-                        ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = data_transmitted; 
+                        ascii_grid_flat[(3839 - (iterator * 16)) -: 16] = {thai_char[15:8], data_transmitted};
                         iterator = (iterator + 1) % 240;
                         thai_char = 24'b0; // Clear the thai_char buffer
                         is_thai = 0;
@@ -95,7 +96,7 @@ module ascii_grid(
                     end else if (data_transmitted == 8'h7F) begin
                         if (iterator > 0) begin
                             iterator = iterator - 1;
-                            ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = 8'h00;
+                            ascii_grid_flat[(3839 - (iterator * 16)) -: 16] = 16'h0000;
                         end
                     end else if (data_transmitted == 8'hE0) begin 
                         is_thai = 1;
@@ -103,7 +104,7 @@ module ascii_grid(
                         thai_char[23:16] = data_transmitted;
                         thai_char_count = thai_char_count + 1;
                     end else begin
-                        ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = data_transmitted; 
+                        ascii_grid_flat[(3839 - (iterator * 16)) -: 16] = {8'b00000000, data_transmitted};
                         iterator = (iterator + 1) % 240;
                     end
                 end

@@ -28,7 +28,7 @@ module top(
     wire [7:0] data_transmitted_1;
     wire [7:0] data_received_2;
     wire [7:0] data_transmitted_2;
-    wire [1919:0] ascii_grid_flat;
+    wire [3839:0] ascii_grid_flat;
     wire data_valid_1;
     wire data_valid_2;
     wire [7:0] iterator;
@@ -65,7 +65,7 @@ module top(
         .seg(seg),
         .dp(dp),
         .an(an),
-        .data_in({data_transmitted_1, data_received_1}),
+        .data_in({ascii_grid_flat[(3839 - (iterator * 16)) -: 16]}),
         .clk(clk)
     );
     
