@@ -12,12 +12,12 @@ module ascii_test(
 
     // Parameters and declarations
     parameter MEMSIZE = 128;      // Memory size (128 locations)
-    reg [6:0] mem[MEMSIZE:0];     // 7-bit memory array
+    reg [15:0] mem[MEMSIZE:0];     // 16-bit memory array
     reg [6:0] itr;                // Memory index for writing
 
     // Signals for ASCII ROM
-    wire [10:0] rom_addr;         // 11-bit text ROM address
-    wire [6:0] ascii_char;        // 7-bit ASCII character code
+    wire [19:0] rom_addr;         // 20-bit text ROM address
+    wire [15:0] ascii_char;        // 16-bit ASCII character code
     wire [3:0] char_row;          // 4-bit row of ASCII character
     wire [2:0] bit_addr;          // Column number of ROM data
     wire [7:0] rom_data;          // 8-bit row data from text ROM
@@ -26,14 +26,14 @@ module ascii_test(
     integer i ;
     initial begin
         itr = 7'b0 ;
-        mem[128] = 7'h20;
+        mem[128] = 16'h0020;
         for (i = 0 ; i < MEMSIZE ; i = i + 1) begin
-            mem[i] = 7'h20 ;
+            mem[i] = 16'h0020 ;
         end
     end
 
     // ASCII ROM instance
-    ascii_rom rom(.clk(clk), .addr(rom_addr), .data(rom_data));
+    ascii_rom rom(.clk(clk), .addr(rom_addr[15:0]), .data(rom_data));
     
     // ASCII ROM address and data interface
     assign rom_addr = {ascii_char, char_row};   // ROM address
@@ -43,25 +43,58 @@ module ascii_test(
     assign ascii_char = mem[((x[7:3] + 8) & 5'b11111) + (32 * ((y[5:4] + 3) & 2'b11))];
     
     assign plot = ((x >= 192 && x < 448) && (y >= 208 && y < 272)) ? ascii_bit : 1'b0;
+    
+    reg [23:0] thai_char;
+	reg is_thai;
+	reg [1:0] thai_char_count;
+	
+	initial is_thai = 0;
 
     // Memory write logic
     always @(posedge we) begin
-        mem[128] = 7'h20;
-        if (data[6:0] == 7'h0D) begin // Handle Enter
-            itr = (1 + (itr >> 5)) << 5;
-            if (itr >= MEMSIZE)
-                itr = 0;
-        end 
-        else begin
-            if (data[6:0] == 7'h7F) begin
-                itr = (itr + 127) % MEMSIZE;
-                mem[itr] = 7'h20;
-            end
-            else begin
-                mem[itr] = data[6:0];
+        mem[128] = 16'h0020;
+        if (is_thai) begin
+            if (thai_char_count == 2) begin
+                mem[itr] = {thai_char[15:8], data};
                 itr = itr + 1;
                 if (itr >= MEMSIZE)
                     itr = 0;
+                thai_char = 24'b0; // Clear the thai_char buffer
+                is_thai = 0;
+            end else begin
+                case (thai_char_count)
+                    0: thai_char[23:16] = data;
+                    1: thai_char[15:8] = data;
+                    default: ; // Do nothing for unexpected values
+                endcase
+                thai_char_count = thai_char_count + 1;
+            end
+        end
+        else begin
+            if (data[6:0] == 7'h0D) begin // Handle Enter
+                itr = (1 + (itr >> 5)) << 5;
+                if (itr >= MEMSIZE)
+                    itr = 0;
+            end 
+            else begin
+                if (data[6:0] == 7'h7F) begin
+                    itr = (itr + 127) % MEMSIZE;
+                    mem[itr] = 16'h0020;
+                end
+                else begin
+                    if (data == 8'hE0) begin
+                        is_thai = 1;
+                        thai_char_count = 0;
+                        thai_char[23:16] = data;
+                        thai_char_count = thai_char_count + 1;
+                    end
+                    else begin
+                        mem[itr] = {9'b0, data[6:0]};
+                        itr = itr + 1;
+                        if (itr >= MEMSIZE)
+                            itr = 0;    
+                    end
+                end
             end
         end
     end

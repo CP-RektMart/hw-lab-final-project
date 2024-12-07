@@ -77,7 +77,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/imports/hdl/PS2Receiver.v
-  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v
   C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_test.v
   C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/baudrate_gen.v
   C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/clockDiv.v

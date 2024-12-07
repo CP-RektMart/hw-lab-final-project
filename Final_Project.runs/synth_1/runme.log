@@ -8,12 +8,12 @@
   **** SW Build 5094488 on Fri Jun 14 08:59:21 MDT 2024
   **** IP Build 5091682 on Fri Jun 14 16:55:04 MDT 2024
   **** SharedData Build 5094118 on Fri Jun 14 01:09:43 MDT 2024
-  **** Start of session at: Sun Dec  8 00:49:13 2024
+  **** Start of session at: Sun Dec  8 05:35:46 2024
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source top.tcl -notrace
-create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 530.375 ; gain = 202.594
+create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 532.066 ; gain = 200.895
 Command: read_checkpoint -auto_incremental -incremental C:/HwSynLab/Final_Project/Final_Project.srcs/utils_1/imports/synth_1/system.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/HwSynLab/Final_Project/Final_Project.srcs/utils_1/imports/synth_1/system.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -27,9 +27,9 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 23840
+INFO: [Synth 8-7075] Helper process launched with PID 24564
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 1386.172 ; gain = 448.805
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 1386.812 ; gain = 448.746
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-11121] redeclaration of ANSI port 'clkDiv' is not allowed [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/clockDiv.v:7]
 WARNING: [Synth 8-10714] extra semicolon is not allowed here in this dialect; use SystemVerilog mode instead [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/clockDiv.v:11]
@@ -57,9 +57,110 @@ WARNING: [Synth 8-567] referenced signal 'is_press' should be on the sensitivity
 INFO: [Synth 8-6157] synthesizing module 'vga_controller' [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/vga_controller.v:21]
 INFO: [Synth 8-6155] done synthesizing module 'vga_controller' (0#1) [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/vga_controller.v:21]
 INFO: [Synth 8-6157] synthesizing module 'ascii_test' [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_test.v:3]
-INFO: [Synth 8-6157] synthesizing module 'ascii_rom' [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'ascii_rom' (0#1) [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom.v:1]
-INFO: [Synth 8-226] default block is never used [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_test.v:74]
+INFO: [Synth 8-6157] synthesizing module 'ascii_rom' [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:22]
+WARNING: [Synth 8-151] case item 16'b1000100101110110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100101110111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100101111000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100101111001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100101111010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100101111011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100101111100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100101111101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100101111110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100101111111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110000000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110000001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110000010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110000011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110000100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110000101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110000110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110000111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110001000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110001001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110001010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110001011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110001100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110001101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110001110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110001111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110010000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110010001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110010010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110010011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110010100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110010101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110010110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110010111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110011000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110011001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110011010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110011011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110011100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110011101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110011110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110011111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110100000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110100001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110100010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110100011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110100100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110100101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110100110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110100111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110101000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110101001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110101010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110101011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110101100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110101101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110101110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110101111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110110000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110110001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110110010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110110011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110110100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110110101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110110110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110110111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110111000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110111001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110111010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110111011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110111100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110111101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110111110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100110111111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111000000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111000001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111000010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111000011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111000100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111000101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111000110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111000111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111001000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111001001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111001010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111001011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111001100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111001101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111001110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111001111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111010000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111010001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111010010 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111010011 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111010100 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111010101 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111010110 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111010111 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111011000 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+WARNING: [Synth 8-151] case item 16'b1000100111011001 is unreachable [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:36]
+INFO: [Common 17-14] Message 'Synth 8-151' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-6155] done synthesizing module 'ascii_rom' (0#1) [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:22]
+INFO: [Synth 8-226] default block is never used [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_test.v:107]
 INFO: [Synth 8-6155] done synthesizing module 'ascii_test' (0#1) [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_test.v:3]
 WARNING: [Synth 8-7071] port 'reset' of module 'ascii_test' is unconnected for instance 'at' [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/top.v:69]
 WARNING: [Synth 8-7023] instance 'at' of module 'ascii_test' has 8 connections declared, but only 7 given [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/top.v:69]
@@ -84,21 +185,20 @@ WARNING: [Synth 8-567] referenced signal 'num3' should be on the sensitivity lis
 INFO: [Synth 8-6155] done synthesizing module 'quadSevenSeg' (0#1) [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/quadSevenSeg.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'top' (0#1) [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/top.v:3]
 WARNING: [Synth 8-7129] Port reset in module ascii_test is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data[7] in module ascii_test is either unconnected or has no load
 WARNING: [Synth 8-7129] Port btnR in module top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1540.770 ; gain = 603.402
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1563.746 ; gain = 625.680
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1540.770 ; gain = 603.402
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1563.746 ; gain = 625.680
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1540.770 ; gain = 603.402
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1563.746 ; gain = 625.680
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 1540.770 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.037 . Memory (MB): peak = 1563.746 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -169,32 +269,32 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1643.891 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1662.777 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1643.891 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1662.777 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:13 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:13 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:13 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-327] inferring latch for variable 'is_cap_reg' [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/scan2ascii.v:31]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -204,19 +304,20 @@ Detailed RTL Component Info :
 	   2 Input   32 Bit       Adders := 2     
 	   2 Input   10 Bit       Adders := 2     
 	   2 Input    8 Bit       Adders := 4     
-	   2 Input    7 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 3     
 	   2 Input    6 Bit       Adders := 1     
 	   2 Input    5 Bit       Adders := 2     
 	   2 Input    4 Bit       Adders := 1     
 	   2 Input    3 Bit       Adders := 2     
-	   2 Input    2 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 3     
 +---Registers : 
-	               16 Bit    Registers := 1     
+	               24 Bit    Registers := 1     
+	               16 Bit    Registers := 131   
+	               14 Bit    Registers := 1     
 	               12 Bit    Registers := 1     
-	               11 Bit    Registers := 1     
 	               10 Bit    Registers := 4     
 	                8 Bit    Registers := 10    
-	                7 Bit    Registers := 129   
+	                7 Bit    Registers := 1     
 	                5 Bit    Registers := 2     
 	                4 Bit    Registers := 1     
 	                2 Bit    Registers := 2     
@@ -224,13 +325,17 @@ Detailed RTL Component Info :
 +---ROMs : 
 	                    ROMs := 1     
 +---Muxes : 
+	   2 Input   24 Bit        Muxes := 2     
+	   4 Input   24 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 1     
 	   4 Input   12 Bit        Muxes := 1     
 	   2 Input   12 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 1     
 	   3 Input    8 Bit        Muxes := 2     
-	   2 Input    7 Bit        Muxes := 3     
+	   2 Input    7 Bit        Muxes := 4     
 	   2 Input    4 Bit        Muxes := 1     
 	   4 Input    4 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 265   
 	   3 Input    1 Bit        Muxes := 1     
 	  12 Input    1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
@@ -249,10 +354,10 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3936] Found unconnected internal register 'rom/addr_reg_reg' and it is trimmed from '16' to '15' bits. [C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom2.v:33]
 WARNING: [Synth 8-3917] design top has port led[7] driven by constant 0
 WARNING: [Synth 8-3917] design top has port dp driven by constant 1
 WARNING: [Synth 8-7129] Port reset in module ascii_test is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data[7] in module ascii_test is either unconnected or has no load
 WARNING: [Synth 8-7129] Port led[14] in module top is either unconnected or has no load
 WARNING: [Synth 8-7129] Port led[12] in module top is either unconnected or has no load
 WARNING: [Synth 8-7129] Port led[11] in module top is either unconnected or has no load
@@ -261,22 +366,22 @@ WARNING: [Synth 8-7129] Port led[9] in module top is either unconnected or has n
 WARNING: [Synth 8-7129] Port led[8] in module top is either unconnected or has no load
 WARNING: [Synth 8-7129] Port btnR in module top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:23 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 ROM: Preliminary Mapping Report
-+------------+------------------+---------------+----------------+
-|Module Name | RTL Object       | Depth x Width | Implemented As | 
-+------------+------------------+---------------+----------------+
-|scan2ascii  | ascii_code       | 128x7         | LUT            | 
-|scan2ascii  | ascii_code       | 128x7         | LUT            | 
-|ascii_test  | rom/addr_reg_reg | 2048x8        | Block RAM      | 
-|top         | conv/ascii_code  | 128x7         | LUT            | 
-|top         | conv/ascii_code  | 128x7         | LUT            | 
-+------------+------------------+---------------+----------------+
++------------+-----------------+---------------+----------------+
+|Module Name | RTL Object      | Depth x Width | Implemented As | 
++------------+-----------------+---------------+----------------+
+|scan2ascii  | ascii_code      | 128x7         | LUT            | 
+|scan2ascii  | ascii_code      | 128x7         | LUT            | 
+|ascii_test  | sel             | 16384x8       | Block RAM      | 
+|top         | conv/ascii_code | 128x7         | LUT            | 
+|top         | conv/ascii_code | 128x7         | LUT            | 
++------------+-----------------+---------------+----------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -285,20 +390,23 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:26 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:27 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:27 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:29 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-7052] The timing for the instance at/rom/addr_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance at/sel_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance at/sel_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance at/sel_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance at/sel_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:28 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:29 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -316,37 +424,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -363,48 +471,47 @@ Report Cell Usage:
 |      |Cell     |Count |
 +------+---------+------+
 |1     |BUFG     |     6|
-|2     |CARRY4   |    34|
-|3     |LUT1     |    37|
-|4     |LUT2     |    49|
-|5     |LUT3     |    42|
-|6     |LUT4     |    50|
-|7     |LUT5     |   310|
-|8     |LUT6     |   389|
-|9     |MUXF7    |   126|
-|10    |MUXF8    |    54|
-|11    |RAMB18E1 |     1|
-|12    |FDCE     |    46|
-|13    |FDRE     |  1007|
-|14    |FDSE     |   128|
-|15    |LD       |     1|
-|16    |IBUF     |    15|
-|17    |OBUF     |    38|
-|18    |OBUFT    |     6|
+|2     |CARRY4   |    32|
+|3     |LUT1     |    36|
+|4     |LUT2     |    67|
+|5     |LUT3     |    46|
+|6     |LUT4     |    64|
+|7     |LUT5     |   234|
+|8     |LUT6     |   753|
+|9     |MUXF7    |   212|
+|10    |MUXF8    |    96|
+|11    |RAMB36E1 |     4|
+|15    |FDCE     |    52|
+|16    |FDRE     |  1784|
+|17    |LD       |     1|
+|18    |IBUF     |    15|
+|19    |OBUF     |    38|
+|20    |OBUFT    |     6|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 1662.777 ; gain = 724.711
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 13 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:30 . Memory (MB): peak = 1643.891 ; gain = 603.402
-Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1643.891 ; gain = 706.523
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:31 . Memory (MB): peak = 1662.777 ; gain = 625.680
+Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 1662.777 ; gain = 724.711
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1643.891 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 216 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 1662.777 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 345 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1643.891 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1662.777 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   LD => LDCE: 1 instance 
 
-Synth Design complete | Checksum: 200a9385
+Synth Design complete | Checksum: ab622649
 INFO: [Common 17-83] Releasing license: Synthesis
-55 Infos, 54 Warnings, 20 Critical Warnings and 0 Errors encountered.
+59 Infos, 153 Warnings, 20 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:36 . Memory (MB): peak = 1643.891 ; gain = 1101.035
+synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:38 . Memory (MB): peak = 1662.777 ; gain = 1117.070
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1643.891 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1662.777 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/HwSynLab/Final_Project/Final_Project.runs/synth_1/top.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Dec  8 00:49:59 2024...
+INFO: [Common 17-206] Exiting Vivado at Sun Dec  8 05:36:33 2024...
