@@ -42,7 +42,6 @@ module top(
     wire keyboard_ready;
     wire keyboard_ready_bounced;
     wire ps2_ascii_ready;
-    
     reg [7:0] buffer;
     
     // *** Generate 25MHz from 100MHz *********************************************************
@@ -71,13 +70,13 @@ module top(
     );
     
     single_pulser sp_keyboard_ready (
-        .clk(clk),
+        .clk(w_25MHz),
         .pushed(keyboard_ready),
         .d(keyboard_ready_bounced)
     );
     
     ps2_to_ascii ps2_to_ascii(
-        .clk(clk),
+        .clk(w_25MHz),
         .ps2_code_new(keyboard_ready_bounced),
         .ps2_code(keyboard_data),
         .ascii_code_new(ps2_ascii_ready),

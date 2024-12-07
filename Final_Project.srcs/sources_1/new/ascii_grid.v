@@ -76,7 +76,7 @@ module ascii_grid(
         inp = 8'd0;
 	end
     
-    always @(posedge w_25MHz or posedge reset or posedge keyboard_valid) begin
+    always @(posedge w_25MHz or posedge reset) begin
         if (reset) begin
             iterator = 8'b0; // Reset iterator correctly
             is_thai = 0;
