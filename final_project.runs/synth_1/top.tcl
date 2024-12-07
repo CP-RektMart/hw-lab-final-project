@@ -80,6 +80,8 @@ read_verilog -library xil_defaultlib {
   C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/baud_rate_generator.v
   C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/clock_div.v
   C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/hex_to_seg.v
+  C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/ps2.v
+  C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/ps2_to_ascii2.v
   C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/quad_seven_seg.v
   C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/rgb_generator.v
   C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/segment_ascii.v

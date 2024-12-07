@@ -42,8 +42,8 @@ module segment_ascii(
     wire [3:0] num3,num2,num1,num0; 
     assign num0 = data_in_reg[3:0];
     assign num1 = {data_in_reg[7:4]};
-    assign num2 = data_in_reg[3:0];
-    assign num3 = {data_in_reg[7:4]};
+    assign num2 = data_out_reg[3:0];
+    assign num3 = {data_out_reg[7:4]};
     
     // an
     wire an0,an1,an2,an3;

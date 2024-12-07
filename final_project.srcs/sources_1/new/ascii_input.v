@@ -50,11 +50,16 @@ module ascii_input(
             ascii_flat[ascii_index -: 8] <= ascii;
             col <= col + 1;
             
+            if (ascii == 8'hE0 || ascii == 8'hB8) begin
+                col <= col - 1;
+            end
+            
             // '\n' handler
             if (ascii == 8'd13) begin
                 col <= 0;
                 row <= row + 1;
             end
+            
             
             // new row
             if (col >= 32) begin

@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Sat Dec  7 19:07:37 2024
-# Process ID: 23064
+# Start of session at: Sun Dec  8 01:31:35 2024
+# Process ID: 21616
 # Current directory: C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.runs/synth_1/top.vds
@@ -19,6 +19,6 @@
 # Host memory       :16868 MB
 # Swap memory       :12348 MB
 # Total Virtual     :29217 MB
-# Available Virtual :8330 MB
+# Available Virtual :7577 MB
 #-----------------------------------------------------------
 source top.tcl -notrace
