@@ -57,6 +57,9 @@ module ascii_test(
             if(ascii_bit_on)
                 rgb = 12'h000;  // black letters
             else
-                rgb = 12'hFFF;  // white background
-   
+                if ((y >= 176 && y <= 192)) begin
+                    rgb = 12'h00F;
+                end else begin
+                    rgb = 12'hFFF;  // white background
+                end
 endmodule

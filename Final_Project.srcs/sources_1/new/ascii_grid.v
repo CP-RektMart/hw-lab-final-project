@@ -76,8 +76,8 @@ module ascii_grid(
                     ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = data_transmitted; 
                     iterator = (iterator + 1) % 240;
                 end
-                debounce = 1;
             end
+            debounce = 1;
         end else if (data_valid == 0) begin
             debounce = 0;
         end
