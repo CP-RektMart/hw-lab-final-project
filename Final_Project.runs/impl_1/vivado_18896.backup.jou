@@ -3,8 +3,8 @@
 # SW Build 5094488 on Fri Jun 14 08:59:21 MDT 2024
 # IP Build 5091682 on Fri Jun 14 16:55:04 MDT 2024
 # SharedData Build 5094118 on Fri Jun 14 01:09:43 MDT 2024
-# Start of session at: Wed Dec  4 15:19:01 2024
-# Process ID: 26460
+# Start of session at: Sat Dec  7 18:40:24 2024
+# Process ID: 18896
 # Current directory: C:/HwSynLab/Final_Project/Final_Project.runs/impl_1
 # Command line: vivado.exe -log top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top.tcl -notrace
 # Log file: C:/HwSynLab/Final_Project/Final_Project.runs/impl_1/top.vdi
@@ -17,8 +17,8 @@
 # CPU Physical cores:16
 # CPU Logical cores :22
 # Host memory       :16766 MB
-# Swap memory       :21024 MB
-# Total Virtual     :37790 MB
-# Available Virtual :19593 MB
+# Swap memory       :20401 MB
+# Total Virtual     :37167 MB
+# Available Virtual :15020 MB
 #-----------------------------------------------------------
 source top.tcl -notrace

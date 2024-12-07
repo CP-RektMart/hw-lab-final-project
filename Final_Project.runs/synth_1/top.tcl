@@ -76,8 +76,18 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/imports/hdl/PS2Receiver.v
   C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_rom.v
   C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/ascii_test.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/baudrate_gen.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/clockDiv.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/imports/hdl/debouncer.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/hexTo7Segment.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/quadSevenSeg.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/scan2ascii.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/uart.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/uart_rx.v
+  C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/uart_tx.v
   C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/vga_controller.v
   C:/HwSynLab/Final_Project/Final_Project.srcs/sources_1/new/top.v
 }
