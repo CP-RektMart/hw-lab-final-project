@@ -23,8 +23,10 @@
 module ascii_grid(
     input clk,
     input data_valid,
+    input keyboard_valid,
     input reset,
     input [7:0] data_transmitted,
+    input [7:0] keyboard_data,
     output reg [3839:0] ascii_grid_flat,
     output reg [7:0] iterator
     );
@@ -64,9 +66,17 @@ module ascii_grid(
 	reg is_thai;
 	reg [1:0] thai_char_count;
 	
-	initial is_thai = 0;
+	
+	reg dvalid;
+	reg [7:0] inp;
+	
+	initial begin
+        is_thai = 0;
+        dvalid = 0;
+        inp = 8'd0;
+	end
     
-    always @(posedge w_25MHz or posedge reset) begin
+    always @(posedge w_25MHz or posedge reset or posedge keyboard_valid) begin
         if (reset) begin
             iterator = 8'b0; // Reset iterator correctly
             is_thai = 0;
@@ -74,43 +84,51 @@ module ascii_grid(
             thai_char = 24'b0; // Reset thai_char
             debounce = 0;
             ascii_grid_flat = 3840'b0;
-        end else if (data_valid) begin
+        end else if (keyboard_valid || data_valid) begin
+            if (keyboard_valid) begin
+                dvalid = 1;
+                inp = keyboard_data;
+            end else if (data_valid) begin
+                dvalid = 1;
+                inp = data_transmitted;
+            end
+        
             if (debounce == 0) begin
                 if (is_thai) begin
                     if(thai_char_count == 2) begin
-                        ascii_grid_flat[(3839 - (iterator * 16)) -: 16] = {thai_char[15:8], data_transmitted};
+                        ascii_grid_flat[(3839 - (iterator * 16)) -: 16] = {thai_char[15:8], inp};
                         iterator = (iterator + 1) % 240;
                         thai_char = 24'b0; // Clear the thai_char buffer
                         is_thai = 0;
                     end else begin
                         case (thai_char_count)
-                            0: thai_char[23:16] = data_transmitted;
-                            1: thai_char[15:8] = data_transmitted;
+                            0: thai_char[23:16] = inp;
+                            1: thai_char[15:8] = inp;
                             default: ; // Do nothing for unexpected values
                         endcase
                         thai_char_count = thai_char_count + 1;
                     end
                 end else begin
-                    if(data_transmitted == 8'h0D) begin
+                    if(inp == 8'h0D) begin
                         iterator = (((iterator / 40) + 1) % 6) * 40;
-                    end else if (data_transmitted == 8'h7F) begin
+                    end else if (inp == 8'h7F) begin
                         if (iterator > 0) begin
                             iterator = iterator - 1;
                             ascii_grid_flat[(3839 - (iterator * 16)) -: 16] = 16'h0000;
                         end
-                    end else if (data_transmitted == 8'hE0) begin 
+                    end else if (inp == 8'hE0) begin 
                         is_thai = 1;
                         thai_char_count = 0;
-                        thai_char[23:16] = data_transmitted;
+                        thai_char[23:16] = inp;
                         thai_char_count = thai_char_count + 1;
                     end else begin
-                        ascii_grid_flat[(3839 - (iterator * 16)) -: 16] = {8'b00000000, data_transmitted};
+                        ascii_grid_flat[(3839 - (iterator * 16)) -: 16] = {8'b00000000, inp};
                         iterator = (iterator + 1) % 240;
                     end
                 end
             end
             debounce = 1;
-        end else if (data_valid == 0) begin
+        end else if (!keyboard_valid && !data_valid) begin
             debounce = 0;
         end
     end
