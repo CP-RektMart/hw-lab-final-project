@@ -1,0 +1,10 @@
+0.7
+2020.2
+May 22 2024
+19:03:11
+C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.sim/sim_1/behav/xsim/glbl.v,1708598507,verilog,,,,glbl,,,,,,,,
+C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/VGA.v,1733392054,verilog,,C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/ascii_rom.v,,vga_controller,,,,,,,,
+C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/ascii_rom.v,1733390851,verilog,,C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/ascii_test.v,,ascii_rom,,,,,,,,
+C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/ascii_test.v,1733396999,verilog,,C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/test.v,,ascii_test,,,,,,,,
+C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/test.v,1733403709,verilog,,C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/top.v,,AsciiArray3D,,,,,,,,
+C:/Users/TeeGooodgood/OneDrive/Documents/programing/university/year3/HWSyn-lab/final_project/final_project.srcs/sources_1/new/top.v,1733392194,verilog,,,,top,,,,,,,,
