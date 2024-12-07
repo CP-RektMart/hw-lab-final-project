@@ -1,14 +1,14 @@
 `timescale 1ns / 1ps
 
 module top(
-    input wire [7:0]sw,
+    input wire [11:0]sw,
     input reset, btnU,
     input wire RsRx,
     input clk,
     input JA1,
     output JA2,
     output wire RsTx,
-    output wire [7:0] led,
+    output wire [11:0] led,
     output wire [3:0] an,
     output wire [6:0] seg,
     output wire dp,
@@ -33,39 +33,40 @@ module top(
     wire data_valid_2;
     wire [7:0] iterator;
     
+    
     //grid display
-//    ascii_grid grid(clk, data_valid_2, reset, data_transmitted_1, ascii_grid_flat, iterator);
     ascii_grid grid(clk, data_valid_1, reset, data_transmitted_1, ascii_grid_flat, iterator);
     
     //receiving from others
     uart_system uart1(
         .clk(clk),
-        .rx(RsRx),
+        .rx(JA1),
         .tx(RsTx),
         .sw_in(sw),
         .data_received(data_received_1),
         .data_transmitted(data_transmitted_1),
         .data_valid(data_valid_1),
-        .btnSent(btnU)
+        .btnSent(1'b0)
     );
     
     //receiving from keyboard - TO BE IMPLEMENTED
-//    uart_system uart2(
-//        .clk(clk),
-//        .rx(JA1),
-//        .tx(RsTx),
-//        .sw_in(sw),
-//        .data_received(data_received_2),
-//        .data_transmitted(data_transmitted_2),
-//        .data_valid(data_valid_2),
-//        .btnSent(1'b0)
-//    );
+    uart_system uart2(
+        .clk(clk),
+        .rx(RsRx),
+        .tx(JA2),
+        .sw_in(sw),
+        .data_received(data_received_2),
+        .data_transmitted(data_transmitted_2),
+        .data_valid(data_valid_2),
+        .btnSent(btnU)
+    );
     
     hexDisplay hxd (
         .seg(seg),
         .dp(dp),
         .an(an),
-        .data_in({ascii_grid_flat[3839:3824]}),
+//        .data_in({ascii_grid_flat[3839:3824]}),
+        .data_in({iterator, data_received_1}),
         .clk(clk)
     );
     

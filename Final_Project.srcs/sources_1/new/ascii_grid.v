@@ -29,7 +29,7 @@ module ascii_grid(
     output reg [7:0] iterator
     );
     
-    initial iterator = 0;
+    initial iterator = 8'b0;
     
 //    initial begin
 //        ascii_grid_flat = {
