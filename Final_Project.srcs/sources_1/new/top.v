@@ -65,7 +65,7 @@ module top(
         .seg(seg),
         .dp(dp),
         .an(an),
-        .data_in({ascii_grid_flat[(3839 - (iterator * 16)) -: 16]}),
+        .data_in({ascii_grid_flat[3839:3824]}),
         .clk(clk)
     );
     

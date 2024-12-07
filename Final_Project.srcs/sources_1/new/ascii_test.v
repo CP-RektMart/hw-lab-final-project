@@ -24,7 +24,7 @@ module ascii_test(
     wire ascii_bit, ascii_bit_on;     // ROM bit and status signal
     
     // instantiate ASCII ROM
-    ascii_rom rom(.clk(clk), .addr(rom_addr), .data(rom_data));
+    ascii_rom rom(.clk(clk), .addr(rom_addr[15:0]), .data(rom_data));
 
     assign ascii_index = ((x >= 16 && x < 336) && (y >= 208 && y < 304)) 
                      ? compute_ascii_index(x, y) 
