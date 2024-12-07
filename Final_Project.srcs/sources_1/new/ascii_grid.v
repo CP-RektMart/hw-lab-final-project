@@ -59,22 +59,53 @@ module ascii_grid(
     // ****************************************************************************************
 	
 	integer i;
+	
+	reg [23:0] thai_char;
+	reg is_thai;
+	reg [1:0] thai_char_count;
+	
+	initial is_thai = 0;
     
     always @(posedge w_25MHz or posedge reset) begin
         if (reset) begin
             iterator = 8'b0; // Reset iterator correctly
+            is_thai = 0;
+            thai_char_count = 0;
+            thai_char = 24'b0; // Reset thai_char
+            debounce = 0;
         end else if (data_valid) begin
             if (debounce == 0) begin
-                if(data_transmitted == 8'h0D) begin
-                    iterator = (((iterator / 40) + 1) % 6) * 40;
-                end else if (data_transmitted == 8'h7F) begin
-                    if (iterator > 0) begin
-                        iterator = iterator - 1;
-                        ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = 8'h00;
+                if (is_thai) begin
+                    if(thai_char_count == 2) begin
+                        ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = data_transmitted; 
+                        iterator = (iterator + 1) % 240;
+                        thai_char = 24'b0; // Clear the thai_char buffer
+                        is_thai = 0;
+                    end else begin
+                        case (thai_char_count)
+                            0: thai_char[23:16] = data_transmitted;
+                            1: thai_char[15:8] = data_transmitted;
+                            default: ; // Do nothing for unexpected values
+                        endcase
+                        thai_char_count = thai_char_count + 1;
                     end
                 end else begin
-                    ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = data_transmitted; 
-                    iterator = (iterator + 1) % 240;
+                    if(data_transmitted == 8'h0D) begin
+                        iterator = (((iterator / 40) + 1) % 6) * 40;
+                    end else if (data_transmitted == 8'h7F) begin
+                        if (iterator > 0) begin
+                            iterator = iterator - 1;
+                            ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = 8'h00;
+                        end
+                    end else if (data_transmitted == 8'hE0) begin 
+                        is_thai = 1;
+                        thai_char_count = 0;
+                        thai_char[23:16] = data_transmitted;
+                        thai_char_count = thai_char_count + 1;
+                    end else begin
+                        ascii_grid_flat[(1919 - (iterator * 8)) -: 8] = data_transmitted; 
+                        iterator = (iterator + 1) % 240;
+                    end
                 end
             end
             debounce = 1;
