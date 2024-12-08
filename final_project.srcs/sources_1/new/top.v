@@ -1,6 +1,12 @@
 `timescale 1ns / 1ps
 
-module top(
+module top
+#(
+    parameter ascii_size = 8,
+    parameter ascii_find = 12,
+    parameter ascii_flat_size = 2048
+)
+(
     input clk,          // 100MHz on Basys 3
     input reset,        // btnC on Basys 3
  
@@ -19,25 +25,28 @@ module top(
     output [3:0] an,
     
     input PS2Data,      // keyboard data
-    input PS2Clk        // keyboard clk
+    input PS2Clk,        // keyboard clk
+    input btnL 
     );
     
     // signals
     // uart
-    wire [7:0] uart_receive_buffer;
+    wire [ascii_size-1:0] uart_receive_buffer;
     wire uart_receive_ready;
     wire uart_receive_ready_bounced;
-    reg [7:0] uart_transmit_buffer;
+    reg [ascii_size-1:0] uart_transmit_buffer;
     wire uart_transmit_ready_bounced;
     wire tick;
     // keyboard
     wire [7:0] keyboard_data;
-    wire [7:0] keyboard_ascii;
+    wire [ascii_find-1:0] keyboard_ascii;
     wire keyboard_ready;
     wire keyboard_ready_bounced;
     wire ps2_ascii_ready;
     // ascii
-    reg [7:0] ascii_buffer;
+    reg [ascii_find-1:0] ascii_buffer;
+    reg language=0;
+    wire btnL_bounced;
     wire ascii_ready;
     assign ascii_ready =  ps2_ascii_ready || uart_receive_ready_bounced;
     
@@ -105,15 +114,29 @@ module top(
         .pushed(keyboard_ready),
         .d(keyboard_ready_bounced)
     );
+   
     
     // convert keyboard code to ascii
     ps2_to_ascii ps2_to_ascii(
         .clk(clk),
         .ps2_code_new(keyboard_ready_bounced),
         .ps2_code(keyboard_data),
+        .language(language),
         .ascii_code_new(ps2_ascii_ready),
-        .ascii_code(keyboard_ascii)
+        .ascii_code(keyboard_ascii[7:0])
     );
+    
+    // language button
+    single_pulser sp_language (
+        .clk(clk),
+        .pushed(btnL),
+        .d(btnL_bounced)
+    );
+   
+   // language 
+    always @(posedge btnL_bounced) begin
+        language = ~language;
+    end
     
     // show in putty
     uart_transmitter ut_keyboard_putty (          

@@ -1,7 +1,12 @@
-module vga(
+module vga
+#(
+    parameter ascii_size = 12,
+    parameter ascii_flat_size = 2048
+)
+(
     input clk,
     input reset,
-    input [7:0] ascii,
+    input [ascii_size-1:0] ascii,
     input ascii_ready,
     output hsync,      
     output vsync,       
@@ -13,7 +18,7 @@ module vga(
     wire w_video_on, w_p_tick;
     reg [11:0] rgb_reg;
     wire [11:0] rgb_next;
-    wire [1023:0] ascii_flat;
+    wire [ascii_flat_size-1:0] ascii_flat;
     
     // ascii input
     ascii_input ai (

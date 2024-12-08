@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Sun Dec  8 01:33:13 2024
+| Date         : Sun Dec  8 07:46:18 2024
 | Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |   189 |
-|    Minimum number of control sets                        |   189 |
+| Total control sets                                       |    63 |
+|    Minimum number of control sets                        |    63 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   340 |
+| Unused register locations in slices containing registers |   361 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,11 +39,11 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |   189 |
-| >= 0 to < 4        |    44 |
+| Total control sets |    63 |
+| >= 0 to < 4        |    46 |
 | >= 4 to < 6        |     3 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |   134 |
+| >= 8 to < 10       |     6 |
 | >= 10 to < 12      |     2 |
 | >= 12 to < 14      |     1 |
 | >= 14 to < 16      |     1 |
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              65 |           37 |
-| No           | No                    | Yes                    |              96 |           43 |
+| No           | No                    | No                     |              71 |           45 |
+| No           | No                    | Yes                    |            2140 |          751 |
 | No           | Yes                   | No                     |               8 |            8 |
-| Yes          | No                    | No                     |              13 |            4 |
-| Yes          | No                    | Yes                    |            1134 |          354 |
-| Yes          | Yes                   | No                     |               8 |            3 |
+| Yes          | No                    | No                     |              14 |            5 |
+| Yes          | No                    | Yes                    |             110 |           26 |
+| Yes          | Yes                   | No                     |               8 |            2 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,194 +74,68 @@ Table of Contents
 |                     Clock Signal                    |              Enable Signal              |          Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
 +-----------------------------------------------------+-----------------------------------------+-----------------------------------+------------------+----------------+--------------+
 |  ps2_to_ascii/ascii_code_reg[1]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_6 |                1 |              1 |         1.00 |
+|  ps2_to_ascii/ascii_code_reg[0]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_7 |                1 |              1 |         1.00 |
+|  ps2_to_ascii/ascii_code_reg[3]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_4 |                1 |              1 |         1.00 |
 |  ps2_to_ascii/ascii_code_reg[5]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_2 |                1 |              1 |         1.00 |
 |  ps2_to_ascii/ascii_code_reg[6]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_1 |                1 |              1 |         1.00 |
-|  ps2_to_ascii/ascii_code_reg[3]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_4 |                1 |              1 |         1.00 |
 |  ps2_to_ascii/ascii_code_reg[4]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_3 |                1 |              1 |         1.00 |
-|  ps2_to_ascii/ascii_code_reg[0]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_7 |                1 |              1 |         1.00 |
 |  ps2_to_ascii/ascii_code_reg[2]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_5 |                1 |              1 |         1.00 |
 |  ps2_to_ascii/ascii_code_reg[7]_0                   |                                         | ps2_to_ascii/ascii_code_new_reg_0 |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_reg[0]_0  |                1 |              1 |         1.00 |
-|  sa/genblk1[17].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
-|  sa/genblk1[3].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
-|  sa/genblk1[1].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
-|  sa/genblk1[7].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
+|  sa/genblk1[16].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
+|  sa/genblk1[15].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
 |  sa/genblk1[4].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
 |  sa/genblk1[5].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
+|  sa/genblk1[3].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
+|  sa/genblk1[1].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
 |  sa/genblk1[2].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
-|  sa/genblk1[6].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
+|  sa/genblk1[17].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
+|  sa/genblk1[9].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
 |  sa/genblk1[10].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
 |  sa/genblk1[0].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
-|  sa/genblk1[9].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
-|  sa/genblk1[12].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
 |  sa/genblk1[8].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
 |  sa/genblk1[11].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
-|  sa/genblk1[15].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
+|  sa/genblk1[6].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
+|  sa/genblk1[7].fDiv/clkDiv_reg_0                    |                                         |                                   |                1 |              1 |         1.00 |
 |  sa/genblk1[13].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
+|  sa/genblk1[12].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
 |  sa/genblk1[14].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
-|  sa/genblk1[16].fDiv/clkDiv_reg_0                   |                                         |                                   |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_new_reg_3 |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_new_reg_5 |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_new_reg_6 |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_reg[5]_0  |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_reg[1]_0  |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_reg[7]_0  |                1 |              1 |         1.00 |
+|  sp_language/d                                      |                                         |                                   |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG                                      | sp_language/state_i_1__1_n_0            |                                   |                1 |              1 |         1.00 |
 |  clk_IBUF_BUFG                                      | sp_uart_transmit_ready/state_i_1__0_n_0 |                                   |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_new_reg_0 |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_new_reg_7 |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_reg[6]_0  |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_reg[3]_0  |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_reg[4]_0  |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_reg[2]_0  |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_new_reg_4 |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_new_reg_2 |                1 |              1 |         1.00 |
-|  uart_receive_ready_bounced_BUFG                    |                                         | ps2_to_ascii/ascii_code_new_reg_1 |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_reg[1]_0  |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_reg[0]_0  |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_reg[3]_0  |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_reg[5]_0  |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_new_reg_0 |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_new_reg_2 |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_new_reg_5 |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_reg[6]_0  |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_reg[4]_0  |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_new_reg_7 |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_reg[2]_0  |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_new_reg_6 |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_reg[7]_0  |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_new_reg_1 |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_new_reg_3 |                1 |              1 |         1.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         | ps2_to_ascii/ascii_code_new_reg_4 |                1 |              1 |         1.00 |
 |  sa/fdivTarget/CLK                                  |                                         |                                   |                1 |              2 |         2.00 |
+|  clk_IBUF_BUFG                                      | ur/tick_next                            | reset_IBUF                        |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG                                      | ut/tick_next                            | reset_IBUF                        |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG                                      | ut_keyboard_putty/tick_next             | reset_IBUF                        |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG                                      | ur/tick_next                            | reset_IBUF                        |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[175]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[383]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[399]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[303]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[1007]_i_1_n_0           | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[39]_i_1_n_0             | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[351]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[407]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[255]_i_1_n_0            | reset_IBUF                        |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[423]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[271]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[431]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[439]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[1023]_i_1_n_0           | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[15]_i_1_n_0             | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[231]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[1015]_i_1_n_0           | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[159]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[263]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[279]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[311]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[343]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[375]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[391]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[415]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[447]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[127]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[143]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[191]_i_1_n_0            | reset_IBUF                        |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[199]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[207]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[215]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[151]_i_1_n_0            | reset_IBUF                        |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[239]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[135]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[167]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[119]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[23]_i_1_n_0             | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[247]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[319]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[111]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[31]_i_1_n_0             | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[103]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[183]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[287]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[327]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[567]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[711]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[543]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[583]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[639]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[631]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[687]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[767]_i_1_n_0            | reset_IBUF                        |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[855]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[535]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[55]_i_1_n_0             | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[719]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[655]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[495]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[455]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[559]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[607]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[663]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[527]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[47]_i_1_n_0             | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[647]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[671]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[703]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[735]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[63]_i_1_n_0             | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[591]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[695]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[463]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[71]_i_1_n_0             | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[759]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[503]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[471]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[775]_i_1_n_0            | reset_IBUF                        |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[791]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[799]_i_1_n_0            | reset_IBUF                        |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[679]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[815]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[487]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[551]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[615]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[575]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[751]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[79]_i_1_n_0             | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[831]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[519]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[783]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[839]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[479]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[727]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[823]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[847]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[623]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[599]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[7]_i_1_n_0              | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[511]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[807]_i_1_n_0            | reset_IBUF                        |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[903]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[95]_i_1_n_0             | reset_IBUF                        |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[919]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[991]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[87]_i_1_n_0             | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[967]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[887]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[927]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[895]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[879]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[999]_i_1_n_0            | reset_IBUF                        |                6 |              8 |         1.33 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[975]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[951]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[935]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[943]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[743]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[983]_i_1_n_0            | reset_IBUF                        |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[871]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[863]_i_1_n_0            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[911]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  uart_receive_ready_bounced_BUFG                    |                                         |                                   |                2 |              8 |         4.00 |
-|  sp_uart_transmit_ready/uart_transmit_ready_bounced |                                         |                                   |                2 |              8 |         4.00 |
+|  sp_uart_transmit_ready/uart_transmit_ready_bounced |                                         |                                   |                1 |              8 |         8.00 |
+|  sp_uart_receive_ready/uart_receive_ready_bounced   |                                         |                                   |                3 |              8 |         2.67 |
 |  clk_IBUF_BUFG                                      | ur/data_next                            | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | ut/data_next_0                          | reset_IBUF                        |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG                                      | ut_keyboard_putty/data_next             | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | ps2/E[0]                                | ps2_to_ascii/ascii_ready13_out    |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[295]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[359]_i_1_n_0            | reset_IBUF                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[335]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[367]_i_1_n_0            | reset_IBUF                        |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[223]_i_1_n_0            | reset_IBUF                        |                6 |              8 |         1.33 |
-|  clk_IBUF_BUFG                                      | v/ai/ascii_flat[959]_i_1_n_0            | reset_IBUF                        |                5 |              8 |         1.60 |
-|  v/vc/E[0]                                          | v/vc/v_count_next_1                     | reset_IBUF                        |                6 |             10 |         1.67 |
-|  v/vc/E[0]                                          |                                         | reset_IBUF                        |                4 |             10 |         2.50 |
+|  clk_IBUF_BUFG                                      | ut/data_next                            | reset_IBUF                        |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG                                      | ut_keyboard_putty/data_next             | reset_IBUF                        |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG                                      | ps2/E[0]                                | ps2_to_ascii/ascii_ready13_out    |                2 |              8 |         4.00 |
+|  v/vc/E[0]                                          |                                         | reset_IBUF                        |                5 |             10 |         2.00 |
+|  v/vc/E[0]                                          | v/vc/v_count_next_1                     | reset_IBUF                        |                5 |             10 |         2.00 |
 |  clk_IBUF_BUFG                                      | v/vc/E[0]                               |                                   |                3 |             12 |         4.00 |
-| ~PS2Clk_IBUF_BUFG                                   |                                         | reset_IBUF                        |                3 |             15 |         5.00 |
-|  clk_IBUF_BUFG                                      |                                         |                                   |               14 |             29 |         2.07 |
+| ~PS2Clk_IBUF_BUFG                                   |                                         | reset_IBUF                        |                4 |             15 |         3.75 |
+|  clk_IBUF_BUFG                                      | ps2_to_ascii/ascii_ready                | reset_IBUF                        |                6 |             32 |         5.33 |
 |  clk_IBUF_BUFG                                      | v/ai/row                                | reset_IBUF                        |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG                                      | ps2_to_ascii/E[0]                       | reset_IBUF                        |                7 |             32 |         4.57 |
-|  clk_IBUF_BUFG                                      |                                         | reset_IBUF                        |               20 |             55 |         2.75 |
+|  clk_IBUF_BUFG                                      |                                         |                                   |               21 |             34 |         1.62 |
+|  clk_IBUF_BUFG                                      |                                         | reset_IBUF                        |              726 |           2099 |         2.89 |
 +-----------------------------------------------------+-----------------------------------------+-----------------------------------+------------------+----------------+--------------+
 
 

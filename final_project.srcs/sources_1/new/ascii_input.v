@@ -20,18 +20,24 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ascii_input(
+module ascii_input
+#(
+    parameter ascii_size = 12,
+    parameter ascii_flat_size = 2048,
+    parameter ascii_index_size = 11
+)
+(
     input clk,
-    input [7:0] ascii,
+    input [ascii_size-1:0] ascii,
     input ready_signal,
     input reset,
-    output reg [1023:0] ascii_flat
+    output reg [ascii_flat_size-1:0] ascii_flat
     );
 
     // ascii flat management
     integer row;
     integer col;
-    wire [11:0] ascii_index;
+    wire [ascii_index_size:0] ascii_index;
     
     initial begin
         row = 0; 
@@ -39,7 +45,7 @@ module ascii_input(
         ascii_flat = 0;
     end
     
-    assign ascii_index = (1023) - (row*(8*32)) - (col*8);
+    assign ascii_index = (ascii_flat_size-1) - (row*((ascii_size-1)*32)) - (col*(ascii_size-1));
     
     always @(posedge clk or posedge reset) begin
         if (reset) begin
@@ -47,15 +53,15 @@ module ascii_input(
             col <= 0;
             ascii_flat <= 0;
         end else if (ready_signal) begin
-            ascii_flat[ascii_index -: 8] <= ascii;
+            ascii_flat[ascii_index -: ascii_size] <= ascii;
             col <= col + 1;
             
-            if (ascii == 8'hE0 || ascii == 8'hB8) begin
+            if (ascii == 12'hE0 || ascii == 12'hB8) begin
                 col <= col - 1;
             end
             
             // '\n' handler
-            if (ascii == 8'd13) begin
+            if (ascii == 12'd13) begin
                 col <= 0;
                 row <= row + 1;
             end

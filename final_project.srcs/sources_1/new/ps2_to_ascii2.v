@@ -24,13 +24,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-module ps2_to_ascii(clk, ps2_code_new, ps2_code, ascii_code_new, ascii_code);
-
+module ps2_to_ascii(clk, ps2_code_new, ps2_code, language, ascii_code_new, ascii_code);
+  
   input clk;
   input ps2_code_new;
   input [7:0] ps2_code;
+  input language; // 0 engish 1 thai
   output ascii_code_new;
-  output [7:0] ascii_code;
+  output [11:0] ascii_code;
 
   parameter
   ST_MAKE=0,
@@ -43,7 +44,7 @@ module ps2_to_ascii(clk, ps2_code_new, ps2_code, ascii_code_new, ascii_code);
   reg capstoggle=0, capslock=0;
   reg shift=0;
   reg ascii_code_new=0;
-  reg [7:0] ascii_code=0;
+  reg [11:0] ascii_code=0;
   reg [15:0] make_code=0;
   reg ps2_ready=0;
   reg ascii_ready=0;
@@ -142,162 +143,322 @@ module ps2_to_ascii(clk, ps2_code_new, ps2_code, ascii_code_new, ascii_code);
       ascii_code <= 8'h20; //space
     else begin
       // chars that depend on capslock and shift
-      if (shift==0) begin //lower case
-        casex ({capslock,make_code[7:0]})
-          9'hx_45: ascii_code <= 8'h30; //0
-          9'hx_16: ascii_code <= 8'h31; //1
-          9'hx_1E: ascii_code <= 8'h32; //2
-          9'hx_26: ascii_code <= 8'h33; //3
-          9'hx_25: ascii_code <= 8'h34; //4
-          9'hx_2E: ascii_code <= 8'h35; //5
-          9'hx_36: ascii_code <= 8'h36; //6
-          9'hx_3D: ascii_code <= 8'h37; //7
-          9'hx_3E: ascii_code <= 8'h38; //8
-          9'hx_46: ascii_code <= 8'h39; //9
-          9'hx_52: ascii_code <= 8'h27; //'
-          9'hx_41: ascii_code <= 8'h2C; //,
-          9'hx_4E: ascii_code <= 8'h2D; //-
-          9'hx_49: ascii_code <= 8'h2E; //.
-          9'hx_4A: ascii_code <= 8'h2F; ///
-          9'hx_4C: ascii_code <= 8'h3B; //;
-          9'hx_55: ascii_code <= 8'h3D; //=
-          9'hx_54: ascii_code <= 8'h5B; //[
-          9'hx_5D: ascii_code <= 8'h5C; //\
-          9'hx_5B: ascii_code <= 8'h5D; //]
-          9'hx_0E: ascii_code <= 8'h60; //`       
-          9'h0_1C: ascii_code <= 8'h61; //a
-          9'h0_32: ascii_code <= 8'h62; //b
-          9'h0_21: ascii_code <= 8'h63; //c
-          9'h0_23: ascii_code <= 8'h64; //d
-          9'h0_24: ascii_code <= 8'h65; //e
-          9'h0_2B: ascii_code <= 8'h66; //f
-          9'h0_34: ascii_code <= 8'h67; //g
-          9'h0_33: ascii_code <= 8'h68; //h
-          9'h0_43: ascii_code <= 8'h69; //i
-          9'h0_3B: ascii_code <= 8'h6A; //j
-          9'h0_42: ascii_code <= 8'h6B; //k
-          9'h0_4B: ascii_code <= 8'h6C; //l
-          9'h0_3A: ascii_code <= 8'h6D; //m
-          9'h0_31: ascii_code <= 8'h6E; //n
-          9'h0_44: ascii_code <= 8'h6F; //o
-          9'h0_4D: ascii_code <= 8'h70; //p
-          9'h0_15: ascii_code <= 8'h71; //q
-          9'h0_2D: ascii_code <= 8'h72; //r
-          9'h0_1B: ascii_code <= 8'h73; //s
-          9'h0_2C: ascii_code <= 8'h74; //t
-          9'h0_3C: ascii_code <= 8'h75; //u
-          9'h0_2A: ascii_code <= 8'h76; //v
-          9'h0_1D: ascii_code <= 8'h77; //w
-          9'h0_22: ascii_code <= 8'h78; //x
-          9'h0_35: ascii_code <= 8'h79; //y
-          9'h0_1A: ascii_code <= 8'h7A; //z
-          9'h1_1C: ascii_code <= 8'h41; //A
-          9'h1_32: ascii_code <= 8'h42; //B
-          9'h1_21: ascii_code <= 8'h43; //C
-          9'h1_23: ascii_code <= 8'h44; //D
-          9'h1_24: ascii_code <= 8'h45; //E
-          9'h1_2B: ascii_code <= 8'h46; //F
-          9'h1_34: ascii_code <= 8'h47; //G
-          9'h1_33: ascii_code <= 8'h48; //H
-          9'h1_43: ascii_code <= 8'h49; //I
-          9'h1_3B: ascii_code <= 8'h4A; //J
-          9'h1_42: ascii_code <= 8'h4B; //K
-          9'h1_4B: ascii_code <= 8'h4C; //L
-          9'h1_3A: ascii_code <= 8'h4D; //M
-          9'h1_31: ascii_code <= 8'h4E; //N
-          9'h1_44: ascii_code <= 8'h4F; //O
-          9'h1_4D: ascii_code <= 8'h50; //P
-          9'h1_15: ascii_code <= 8'h51; //Q
-          9'h1_2D: ascii_code <= 8'h52; //R
-          9'h1_1B: ascii_code <= 8'h53; //S
-          9'h1_2C: ascii_code <= 8'h54; //T
-          9'h1_3C: ascii_code <= 8'h55; //U
-          9'h1_2A: ascii_code <= 8'h56; //V
-          9'h1_1D: ascii_code <= 8'h57; //W
-          9'h1_22: ascii_code <= 8'h58; //X
-          9'h1_35: ascii_code <= 8'h59; //Y
-          9'h1_1A: ascii_code <= 8'h5A; //Z
-          default: ascii_code <= 8'h00;
-        endcase
-      end
-      else if (shift == 1) begin //uppercase
-        casex ({capslock,make_code[7:0]})
-          9'hx_16: ascii_code <= 8'h21; //!
-          9'hx_52: ascii_code <= 8'h22; //"
-          9'hx_26: ascii_code <= 8'h23; //#
-          9'hx_25: ascii_code <= 8'h24; //$
-          9'hx_2E: ascii_code <= 8'h25; //%
-          9'hx_3D: ascii_code <= 8'h26; //&              
-          9'hx_46: ascii_code <= 8'h28; //(
-          9'hx_45: ascii_code <= 8'h29; //)
-          9'hx_3E: ascii_code <= 8'h2A; //*
-          9'hx_55: ascii_code <= 8'h2B; //+
-          9'hx_4C: ascii_code <= 8'h3A; //:
-          9'hx_41: ascii_code <= 8'h3C; //<
-          9'hx_49: ascii_code <= 8'h3E; //>
-          9'hx_4A: ascii_code <= 8'h3F; //?
-          9'hx_1E: ascii_code <= 8'h40; //@
-          9'hx_36: ascii_code <= 8'h5E; //^
-          9'hx_4E: ascii_code <= 8'h5F; //_
-          9'hx_54: ascii_code <= 8'h7B; //{
-          9'hx_5D: ascii_code <= 8'h7C; //|
-          9'hx_5B: ascii_code <= 8'h7D; //}
-          9'hx_0E: ascii_code <= 8'h7E; //~
-          9'h1_1C: ascii_code <= 8'h61; //a
-          9'h1_32: ascii_code <= 8'h62; //b  
-          9'h1_21: ascii_code <= 8'h63; //c
-          9'h1_23: ascii_code <= 8'h64; //d
-          9'h1_24: ascii_code <= 8'h65; //e
-          9'h1_2B: ascii_code <= 8'h66; //f
-          9'h1_34: ascii_code <= 8'h67; //g
-          9'h1_33: ascii_code <= 8'h68; //h
-          9'h1_43: ascii_code <= 8'h69; //i
-          9'h1_3B: ascii_code <= 8'h6A; //j
-          9'h1_42: ascii_code <= 8'h6B; //k
-          9'h1_4B: ascii_code <= 8'h6C; //l
-          9'h1_3A: ascii_code <= 8'h6D; //m
-          9'h1_31: ascii_code <= 8'h6E; //n
-          9'h1_44: ascii_code <= 8'h6F; //o
-          9'h1_4D: ascii_code <= 8'h70; //p
-          9'h1_15: ascii_code <= 8'h71; //q
-          9'h1_2D: ascii_code <= 8'h72; //r
-          9'h1_1B: ascii_code <= 8'h73; //s
-          9'h1_2C: ascii_code <= 8'h74; //t
-          9'h1_3C: ascii_code <= 8'h75; //u
-          9'h1_2A: ascii_code <= 8'h76; //v
-          9'h1_1D: ascii_code <= 8'h77; //w
-          9'h1_22: ascii_code <= 8'h78; //x
-          9'h1_35: ascii_code <= 8'h79; //y
-          9'h1_1A: ascii_code <= 8'h7A; //z
-          9'h0_1C: ascii_code <= 8'h41; //A
-          9'h0_32: ascii_code <= 8'h42; //B
-          9'h0_21: ascii_code <= 8'h43; //C
-          9'h0_23: ascii_code <= 8'h44; //D
-          9'h0_24: ascii_code <= 8'h45; //E
-          9'h0_2B: ascii_code <= 8'h46; //F
-          9'h0_34: ascii_code <= 8'h47; //G
-          9'h0_33: ascii_code <= 8'h48; //H
-          9'h0_43: ascii_code <= 8'h49; //I
-          9'h0_3B: ascii_code <= 8'h4A; //J
-          9'h0_42: ascii_code <= 8'h4B; //K
-          9'h0_4B: ascii_code <= 8'h4C; //L
-          9'h0_3A: ascii_code <= 8'h4D; //M
-          9'h0_31: ascii_code <= 8'h4E; //N
-          9'h0_44: ascii_code <= 8'h4F; //O
-          9'h0_4D: ascii_code <= 8'h50; //P
-          9'h0_15: ascii_code <= 8'h51; //Q
-          9'h0_2D: ascii_code <= 8'h52; //R
-          9'h0_1B: ascii_code <= 8'h53; //S
-          9'h0_2C: ascii_code <= 8'h54; //T
-          9'h0_3C: ascii_code <= 8'h55; //U
-          9'h0_2A: ascii_code <= 8'h56; //V
-          9'h0_1D: ascii_code <= 8'h57; //W
-          9'h0_22: ascii_code <= 8'h58; //X
-          9'h0_35: ascii_code <= 8'h59; //Y
-          9'h0_1A: ascii_code <= 8'h5A; //Z
-          default: ascii_code <= 8'h00;
-        endcase
-      end
+      if (language) begin
+          if (shift==0) begin //lower case
+            casex ({capslock,make_code[7:0]})
+              9'hx_45: ascii_code <= 12'h0; //0
+              9'hx_16: ascii_code <= 12'h031; //1
+              9'hx_1E: ascii_code <= 12'h032; //2
+              9'hx_26: ascii_code <= 12'h033; //3
+              9'hx_25: ascii_code <= 12'h034; //4
+              9'hx_2E: ascii_code <= 12'h035; //5
+              9'hx_36: ascii_code <= 12'h036; //6
+              9'hx_3D: ascii_code <= 12'h037; //7
+              9'hx_3E: ascii_code <= 12'h038; //8
+              9'hx_46: ascii_code <= 12'h039; //9
+              9'hx_52: ascii_code <= 12'h027; //'
+              9'hx_41: ascii_code <= 12'h02C; //,
+              9'hx_4E: ascii_code <= 12'h2D; //-
+              9'hx_49: ascii_code <= 12'h2E; //.
+              9'hx_4A: ascii_code <= 12'h2F; ///
+              9'hx_4C: ascii_code <= 12'h3B; //;
+              9'hx_55: ascii_code <= 12'h3D; //=
+              9'hx_54: ascii_code <= 12'h5B; //[
+              9'hx_5D: ascii_code <= 12'h5C; //\
+              9'hx_5B: ascii_code <= 12'h5D; //]
+              9'hx_0E: ascii_code <= 12'h60; //`       
+              9'h0_1C: ascii_code <= 12'h61; //a
+              9'h0_32: ascii_code <= 12'h62; //b
+              9'h0_21: ascii_code <= 12'h63; //c
+              9'h0_23: ascii_code <= 12'h64; //d
+              9'h0_24: ascii_code <= 12'h65; //e
+              9'h0_2B: ascii_code <= 12'h66; //f
+              9'h0_34: ascii_code <= 12'h67; //g
+              9'h0_33: ascii_code <= 12'h68; //h
+              9'h0_43: ascii_code <= 12'h69; //i
+              9'h0_3B: ascii_code <= 12'h6A; //j
+              9'h0_42: ascii_code <= 12'h6B; //k
+              9'h0_4B: ascii_code <= 12'h6C; //l
+              9'h0_3A: ascii_code <= 12'h6D; //m
+              9'h0_31: ascii_code <= 12'h6E; //n
+              9'h0_44: ascii_code <= 12'h6F; //o
+              9'h0_4D: ascii_code <= 12'h70; //p
+              9'h0_15: ascii_code <= 12'h71; //q
+              9'h0_2D: ascii_code <= 12'h72; //r
+              9'h0_1B: ascii_code <= 12'h73; //s
+              9'h0_2C: ascii_code <= 12'h74; //t
+              9'h0_3C: ascii_code <= 12'h75; //u
+              9'h0_2A: ascii_code <= 12'h76; //v
+              9'h0_1D: ascii_code <= 12'h77; //w
+              9'h0_22: ascii_code <= 12'h78; //x
+              9'h0_35: ascii_code <= 12'h79; //y
+              9'h0_1A: ascii_code <= 12'h7A; //z
+              9'h1_1C: ascii_code <= 12'h41; //A
+              9'h1_32: ascii_code <= 12'h42; //B
+              9'h1_21: ascii_code <= 12'h43; //C
+              9'h1_23: ascii_code <= 12'h44; //D
+              9'h1_24: ascii_code <= 12'h45; //E
+              9'h1_2B: ascii_code <= 12'h46; //F
+              9'h1_34: ascii_code <= 12'h47; //G
+              9'h1_33: ascii_code <= 12'h48; //H
+              9'h1_43: ascii_code <= 12'h49; //I
+              9'h1_3B: ascii_code <= 12'h4A; //J
+              9'h1_42: ascii_code <= 12'h4B; //K
+              9'h1_4B: ascii_code <= 12'h4C; //L
+              9'h1_3A: ascii_code <= 12'h4D; //M
+              9'h1_31: ascii_code <= 12'h4E; //N
+              9'h1_44: ascii_code <= 12'h4F; //O
+              9'h1_4D: ascii_code <= 12'h50; //P
+              9'h1_15: ascii_code <= 12'h51; //Q
+              9'h1_2D: ascii_code <= 12'h52; //R
+              9'h1_1B: ascii_code <= 12'h53; //S
+              9'h1_2C: ascii_code <= 12'h54; //T
+              9'h1_3C: ascii_code <= 12'h55; //U
+              9'h1_2A: ascii_code <= 12'h56; //V
+              9'h1_1D: ascii_code <= 12'h57; //W
+              9'h1_22: ascii_code <= 12'h58; //X
+              9'h1_35: ascii_code <= 12'h59; //Y
+              9'h1_1A: ascii_code <= 12'h5A; //Z
+              default: ascii_code <= 12'h00;
+            endcase
+          end
+          else if (shift == 1) begin //uppercase
+            casex ({capslock,make_code[7:0]})
+              9'hx_16: ascii_code <= 12'h21; //!
+              9'hx_52: ascii_code <= 12'h22; //"
+              9'hx_26: ascii_code <= 12'h23; //#
+              9'hx_25: ascii_code <= 12'h24; //$
+              9'hx_2E: ascii_code <= 12'h25; //%
+              9'hx_3D: ascii_code <= 12'h26; //&              
+              9'hx_46: ascii_code <= 12'h28; //(
+              9'hx_45: ascii_code <= 12'h29; //)
+              9'hx_3E: ascii_code <= 12'h2A; //*
+              9'hx_55: ascii_code <= 12'h2B; //+
+              9'hx_4C: ascii_code <= 12'h3A; //:
+              9'hx_41: ascii_code <= 12'h3C; //<
+              9'hx_49: ascii_code <= 12'h3E; //>
+              9'hx_4A: ascii_code <= 12'h3F; //?
+              9'hx_1E: ascii_code <= 12'h40; //@
+              9'hx_36: ascii_code <= 12'h5E; //^
+              9'hx_4E: ascii_code <= 12'h5F; //_
+              9'hx_54: ascii_code <= 12'h7B; //{
+              9'hx_5D: ascii_code <= 12'h7C; //|
+              9'hx_5B: ascii_code <= 12'h7D; //}
+              9'hx_0E: ascii_code <= 12'h7E; //~
+              9'h1_1C: ascii_code <= 12'h61; //a
+              9'h1_32: ascii_code <= 12'h62; //b  
+              9'h1_21: ascii_code <= 12'h63; //c
+              9'h1_23: ascii_code <= 12'h64; //d
+              9'h1_24: ascii_code <= 12'h65; //e
+              9'h1_2B: ascii_code <= 12'h66; //f
+              9'h1_34: ascii_code <= 12'h67; //g
+              9'h1_33: ascii_code <= 12'h68; //h
+              9'h1_43: ascii_code <= 12'h69; //i
+              9'h1_3B: ascii_code <= 12'h6A; //j
+              9'h1_42: ascii_code <= 12'h6B; //k
+              9'h1_4B: ascii_code <= 12'h6C; //l
+              9'h1_3A: ascii_code <= 12'h6D; //m
+              9'h1_31: ascii_code <= 12'h6E; //n
+              9'h1_44: ascii_code <= 12'h6F; //o
+              9'h1_4D: ascii_code <= 12'h70; //p
+              9'h1_15: ascii_code <= 12'h71; //q
+              9'h1_2D: ascii_code <= 12'h72; //r
+              9'h1_1B: ascii_code <= 12'h73; //s
+              9'h1_2C: ascii_code <= 12'h74; //t
+              9'h1_3C: ascii_code <= 12'h75; //u
+              9'h1_2A: ascii_code <= 12'h76; //v
+              9'h1_1D: ascii_code <= 12'h77; //w
+              9'h1_22: ascii_code <= 12'h78; //x
+              9'h1_35: ascii_code <= 12'h79; //y
+              9'h1_1A: ascii_code <= 12'h7A; //z
+              9'h0_1C: ascii_code <= 12'h41; //A
+              9'h0_32: ascii_code <= 12'h42; //B
+              9'h0_21: ascii_code <= 12'h43; //C
+              9'h0_23: ascii_code <= 12'h44; //D
+              9'h0_24: ascii_code <= 12'h45; //E
+              9'h0_2B: ascii_code <= 12'h46; //F
+              9'h0_34: ascii_code <= 12'h47; //G
+              9'h0_33: ascii_code <= 12'h48; //H
+              9'h0_43: ascii_code <= 12'h49; //I
+              9'h0_3B: ascii_code <= 12'h4A; //J
+              9'h0_42: ascii_code <= 12'h4B; //K
+              9'h0_4B: ascii_code <= 12'h4C; //L
+              9'h0_3A: ascii_code <= 12'h4D; //M
+              9'h0_31: ascii_code <= 12'h4E; //N
+              9'h0_44: ascii_code <= 12'h4F; //O
+              9'h0_4D: ascii_code <= 12'h50; //P
+              9'h0_15: ascii_code <= 12'h51; //Q
+              9'h0_2D: ascii_code <= 12'h52; //R
+              9'h0_1B: ascii_code <= 12'h53; //S
+              9'h0_2C: ascii_code <= 12'h54; //T
+              9'h0_3C: ascii_code <= 12'h55; //U
+              9'h0_2A: ascii_code <= 12'h56; //V
+              9'h0_1D: ascii_code <= 12'h57; //W
+              9'h0_22: ascii_code <= 12'h58; //X
+              9'h0_35: ascii_code <= 12'h59; //Y
+              9'h0_1A: ascii_code <= 12'h5A; //Z
+              default: ascii_code <= 12'h00;
+            endcase
+          end
+        end
+        else begin
+            if (shift==0) begin //lower case
+            casex ({capslock,make_code[7:0]})
+              9'hx_45: ascii_code <= 12'h888; //0  
+              9'hx_16: ascii_code <= 12'h8B2; //1
+              9'hx_1E: ascii_code <= 12'h000; //2
+              9'hx_26: ascii_code <= 12'h000; //3
+              9'hx_25: ascii_code <= 12'h8A0;  //4
+              9'hx_2E: ascii_code <= 12'h896; //5
+              9'hx_36: ascii_code <= 12'h8b8; //6
+              9'hx_3D: ascii_code <= 12'h8b6; //7
+              9'hx_3E: ascii_code <= 12'h884; //8
+              9'hx_46: ascii_code <= 12'h885; //9
+              9'hx_52: ascii_code <= 12'h887; //'
+              9'hx_41: ascii_code <= 12'h8A1; //,
+              9'hx_4E: ascii_code <= 12'h882; //-
+              9'hx_49: ascii_code <= 12'h983; //.
+              9'hx_4A: ascii_code <= 12'h89d; ///
+              9'hx_4C: ascii_code <= 12'h8a7; //;
+              9'hx_55: ascii_code <= 12'h88a; //=
+              9'hx_54: ascii_code <= 12'h89a; //[
+              9'hx_5D: ascii_code <= 12'h883; //\
+              9'hx_5B: ascii_code <= 12'h5D; //]
+              9'hx_0E: ascii_code <= 12'h60; //`       
+              9'h0_1C: ascii_code <= 12'h61; //a
+              9'h0_32: ascii_code <= 12'h62; //b
+              9'h0_21: ascii_code <= 12'h63; //c
+              9'h0_23: ascii_code <= 12'h64; //d
+              9'h0_24: ascii_code <= 12'h65; //e
+              9'h0_2B: ascii_code <= 12'h66; //f
+              9'h0_34: ascii_code <= 12'h67; //g
+              9'h0_33: ascii_code <= 12'h68; //h
+              9'h0_43: ascii_code <= 12'h69; //i
+              9'h0_3B: ascii_code <= 12'h6A; //j
+              9'h0_42: ascii_code <= 12'h6B; //k
+              9'h0_4B: ascii_code <= 12'h6C; //l
+              9'h0_3A: ascii_code <= 12'h6D; //m
+              9'h0_31: ascii_code <= 12'h6E; //n
+              9'h0_44: ascii_code <= 12'h6F; //o
+              9'h0_4D: ascii_code <= 12'h70; //p
+              9'h0_15: ascii_code <= 12'h71; //q
+              9'h0_2D: ascii_code <= 12'h72; //r
+              9'h0_1B: ascii_code <= 12'h73; //s
+              9'h0_2C: ascii_code <= 12'h74; //t
+              9'h0_3C: ascii_code <= 12'h75; //u
+              9'h0_2A: ascii_code <= 12'h76; //v
+              9'h0_1D: ascii_code <= 12'h77; //w
+              9'h0_22: ascii_code <= 12'h78; //x
+              9'h0_35: ascii_code <= 12'h79; //y
+              9'h0_1A: ascii_code <= 12'h7A; //z
+              9'h1_1C: ascii_code <= 12'h41; //A
+              9'h1_32: ascii_code <= 12'h42; //B
+              9'h1_21: ascii_code <= 12'h43; //C
+              9'h1_23: ascii_code <= 12'h44; //D
+              9'h1_24: ascii_code <= 12'h45; //E
+              9'h1_2B: ascii_code <= 12'h46; //F
+              9'h1_34: ascii_code <= 12'h47; //G
+              9'h1_33: ascii_code <= 12'h48; //H
+              9'h1_43: ascii_code <= 12'h49; //I
+              9'h1_3B: ascii_code <= 12'h4A; //J
+              9'h1_42: ascii_code <= 12'h4B; //K
+              9'h1_4B: ascii_code <= 12'h4C; //L
+              9'h1_3A: ascii_code <= 12'h4D; //M
+              9'h1_31: ascii_code <= 12'h4E; //N
+              9'h1_44: ascii_code <= 12'h4F; //O
+              9'h1_4D: ascii_code <= 12'h50; //P
+              9'h1_15: ascii_code <= 12'h51; //Q
+              9'h1_2D: ascii_code <= 12'h52; //R
+              9'h1_1B: ascii_code <= 12'h53; //S
+              9'h1_2C: ascii_code <= 12'h54; //T
+              9'h1_3C: ascii_code <= 12'h55; //U
+              9'h1_2A: ascii_code <= 12'h56; //V
+              9'h1_1D: ascii_code <= 12'h57; //W
+              9'h1_22: ascii_code <= 12'h58; //X
+              9'h1_35: ascii_code <= 12'h59; //Y
+              9'h1_1A: ascii_code <= 12'h5A; //Z
+              default: ascii_code <= 12'h00;
+            endcase
+          end
+          else if (shift == 1) begin //uppercase
+            casex ({capslock,make_code[7:0]})
+              9'hx_16: ascii_code <= 12'h21; //!
+              9'hx_52: ascii_code <= 12'h22; //"
+              9'hx_26: ascii_code <= 12'h23; //#
+              9'hx_25: ascii_code <= 12'h24; //$
+              9'hx_2E: ascii_code <= 12'h25; //%
+              9'hx_3D: ascii_code <= 12'h26; //&              
+              9'hx_46: ascii_code <= 12'h28; //(
+              9'hx_45: ascii_code <= 12'h29; //)
+              9'hx_3E: ascii_code <= 12'h2A; //*
+              9'hx_55: ascii_code <= 12'h2B; //+
+              9'hx_4C: ascii_code <= 12'h3A; //:
+              9'hx_41: ascii_code <= 12'h3C; //<
+              9'hx_49: ascii_code <= 12'h3E; //>
+              9'hx_4A: ascii_code <= 12'h3F; //?
+              9'hx_1E: ascii_code <= 12'h40; //@
+              9'hx_36: ascii_code <= 12'h5E; //^
+              9'hx_4E: ascii_code <= 12'h5F; //_
+              9'hx_54: ascii_code <= 12'h7B; //{
+              9'hx_5D: ascii_code <= 12'h7C; //|
+              9'hx_5B: ascii_code <= 12'h7D; //}
+              9'hx_0E: ascii_code <= 12'h7E; //~
+              9'h1_1C: ascii_code <= 12'h61; //a
+              9'h1_32: ascii_code <= 12'h62; //b  
+              9'h1_21: ascii_code <= 12'h63; //c
+              9'h1_23: ascii_code <= 12'h64; //d
+              9'h1_24: ascii_code <= 12'h65; //e
+              9'h1_2B: ascii_code <= 12'h66; //f
+              9'h1_34: ascii_code <= 12'h67; //g
+              9'h1_33: ascii_code <= 12'h68; //h
+              9'h1_43: ascii_code <= 12'h69; //i
+              9'h1_3B: ascii_code <= 12'h6A; //j
+              9'h1_42: ascii_code <= 12'h6B; //k
+              9'h1_4B: ascii_code <= 12'h6C; //l
+              9'h1_3A: ascii_code <= 12'h6D; //m
+              9'h1_31: ascii_code <= 12'h6E; //n
+              9'h1_44: ascii_code <= 12'h6F; //o
+              9'h1_4D: ascii_code <= 12'h70; //p
+              9'h1_15: ascii_code <= 12'h71; //q
+              9'h1_2D: ascii_code <= 12'h72; //r
+              9'h1_1B: ascii_code <= 12'h73; //s
+              9'h1_2C: ascii_code <= 12'h74; //t
+              9'h1_3C: ascii_code <= 12'h75; //u
+              9'h1_2A: ascii_code <= 12'h76; //v
+              9'h1_1D: ascii_code <= 12'h77; //w
+              9'h1_22: ascii_code <= 12'h78; //x
+              9'h1_35: ascii_code <= 12'h79; //y
+              9'h1_1A: ascii_code <= 12'h7A; //z
+              9'h0_1C: ascii_code <= 12'h41; //A
+              9'h0_32: ascii_code <= 12'h42; //B
+              9'h0_21: ascii_code <= 12'h43; //C
+              9'h0_23: ascii_code <= 12'h44; //D
+              9'h0_24: ascii_code <= 12'h45; //E
+              9'h0_2B: ascii_code <= 12'h46; //F
+              9'h0_34: ascii_code <= 12'h47; //G
+              9'h0_33: ascii_code <= 12'h48; //H
+              9'h0_43: ascii_code <= 12'h49; //I
+              9'h0_3B: ascii_code <= 12'h4A; //J
+              9'h0_42: ascii_code <= 12'h4B; //K
+              9'h0_4B: ascii_code <= 12'h4C; //L
+              9'h0_3A: ascii_code <= 12'h4D; //M
+              9'h0_31: ascii_code <= 12'h4E; //N
+              9'h0_44: ascii_code <= 12'h4F; //O
+              9'h0_4D: ascii_code <= 12'h50; //P
+              9'h0_15: ascii_code <= 12'h51; //Q
+              9'h0_2D: ascii_code <= 12'h52; //R
+              9'h0_1B: ascii_code <= 12'h53; //S
+              9'h0_2C: ascii_code <= 12'h54; //T
+              9'h0_3C: ascii_code <= 12'h55; //U
+              9'h0_2A: ascii_code <= 12'h56; //V
+              9'h0_1D: ascii_code <= 12'h57; //W
+              9'h0_22: ascii_code <= 12'h58; //X
+              9'h0_35: ascii_code <= 12'h59; //Y
+              9'h0_1A: ascii_code <= 12'h5A; //Z
+              default: ascii_code <= 12'h00;
+            endcase
+          end
+        end
     end
   end
   
