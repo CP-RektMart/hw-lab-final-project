@@ -135,7 +135,33 @@ module ascii_test(
 //                     (x >= 150 && x < 170 && y >= 410 && y < 440)) begin
 //            rgb = 12'h888; // Box
         end else begin
-            rgb = 12'hFFF; // White background
+            if ((x >= 460 && x < 640 && y >= 300 && y < 350) ||
+                (x >= 480 && x < 620 && y >= 250 && y < 300) ||
+                (x >= 500 && x < 600 && y >= 200 && y < 250) ||
+                (x >= 520 && x < 580 && y >= 160 && y < 200) ||
+                (x >= 535 && x < 565 && y >= 130 && y < 160)) begin
+                rgb = 12'hE94; // Leaf
+            end else begin
+                if (x >= 535 && x < 565 && y >= 350 && y < 440) begin
+                    rgb = 12'h36B; // Stem
+                end else begin
+                    if ((x >= 0 && x < 120 && y >= 400 && y < 480) ||
+                         (x >= 200 && x < 535 && y >= 400 && y < 480) ||
+                         (x >= 120 && x < 200 && y >= 440 && y < 480) ||
+                         (x >= 535 && x < 640 && y >= 440 && y < 480) ||
+                         (x >= 565 && x < 640 && y >= 400 && y < 440)) begin
+                        rgb = 12'hC66; // Ground
+                    end else begin
+                        if ((x >= 120 && x < 200 && y >= 390 && y < 410) ||
+                             (x >= 150 && x < 170 && y >= 360 && y < 390) ||
+                             (x >= 150 && x < 170 && y >= 410 && y < 440)) begin
+                            rgb = 12'h888; // Ribbon
+                        end else begin
+                            rgb = 12'hFFF; // White background
+                        end
+                    end
+                end
+            end
         end
     end
     
