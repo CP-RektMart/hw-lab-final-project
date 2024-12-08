@@ -115,7 +115,7 @@ module top(
         .seg(seg),
         .dp(dp),
         .an(an),
-        .data_in({iterator, buffer}),
+        .data_in({iterator, data_received_1}),
         .clk(clk)
     );
     
